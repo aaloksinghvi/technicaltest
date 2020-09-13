@@ -1,0 +1,11 @@
+- block:
+  - name: check_status
+    uri:  
+      url: http://aaloksinghvi2c.mylabserver.com:8000/healthcheck
+      method: GET
+    register: health_check
+    when: inventory_hostname == "aaloksinghvi2c.mylabserver.com"
+  - debug:
+      var: health_check
+    when: inventory_hostname == "aaloksinghvi2c.mylabserver.com"
+

@@ -1,0 +1,28 @@
+ - block:
+   - name: check_disk1
+     assert:
+       that: item.size_available > item.size_total|float * 0.8
+       msg: 'disk space has reached 80% threshold'
+     when: item.mount == mountname
+     with_items: '{{ ansible_mounts }}'
+     when: inventory_hostname == "aaloksinghvi2c.mylabserver.com"
+     notify: send mail
+
+   - name: send mail
+     mail:
+      host: smtp.gmail.com
+      port: 465
+      sender: aaloksinghvi@gmail.com
+      to: aaloksinghvi@gmail.com
+      subject: Report for { { ansible_hostname } }
+      body: 'Server { { ansible_hostname } } has reached 80%'
+      when: inventory_hostname == "aaloksinghvi2c.mylabserver.com"
+
+ - block:
+   - name: check_disk
+     assert:
+       that: item.size_available > item.size_total|float * 0.20
+       msg: ‘disk space has reached 80% threshold’
+     when: item.mount == mountname
+     with_items: ‘{{ ansible_mounts }}’
+     register: freespcinfo

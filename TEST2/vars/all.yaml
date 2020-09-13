@@ -1,0 +1,11 @@
+# Variables leveraged by ansible
+
+[all:vars]
+action: NULL 
+verify_install: service 
+check_disk: shell
+check_status: uri
+ansible_ssh_user: ansible 
+ansible_ssh_pass: work2day$
+ansible_sudo_pass: work2day$
+

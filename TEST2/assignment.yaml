@@ -1,0 +1,21 @@
+---
+- hosts: all 
+  gather_facts: yes 
+  become: yes 
+  tasks: 
+    - set_fact: 
+        action: "{{ action }}"
+    - name: verify_install
+      include_role: 
+        name: verify_install 
+      when: action == 'verify_install'
+     
+    - name: check disk
+      include_role: 
+        name: check_disk 
+      when: action == 'check_disk' 
+    
+    - name: check_status
+      include_role: 
+         name: check_status 
+      when: action == 'check_status' 
