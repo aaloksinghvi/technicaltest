@@ -181,3 +181,89 @@ aaloksinghvi4c.mylabserver.com : ok=2    changed=0    unreachable=0    failed=0 
 
 
 ```
+```
+3. action=check_disk
+[ansible@aaloksinghvi1c project]$ ansible-playbook -i inv assignment.yaml -e
+"action=check_disk"
+[WARNING]: Found variable using reserved name: action
+PLAY [all] *********************************************************************
+TASK [Gathering Facts] *********************************************************
+ok: [aaloksinghvi4c.mylabserver.com]
+ok: [aaloksinghvi2c.mylabserver.com]
+ok: [aaloksinghvi3c.mylabserver.com]
+TASK [set_fact] ****************************************************************
+ok: [aaloksinghvi4c.mylabserver.com]
+ok: [aaloksinghvi3c.mylabserver.com]
+ok: [aaloksinghvi2c.mylabserver.com]
+TASK [verify_install] **********************************************************
+skipping: [aaloksinghvi2c.mylabserver.com]
+skipping: [aaloksinghvi3c.mylabserver.com]
+skipping: [aaloksinghvi4c.mylabserver.com]
+TASK [check disk] **************************************************************
+[WARNING]: While constructing a mapping from
+/home/ansible/project/roles/check_disk/tasks/main.yaml, line 2, column 6, found
+a duplicate dict key (when). Using last defined value only.
+TASK [check_disk1] *************************************************************
+skipping: [aaloksinghvi4c.mylabserver.com] => (item={u'block_used': 1888839, u'uuid':
+u'0f790447-ebef-4ca0-b229-d0aa1985d57f', u'size_total': 21463281664, u'block_total':
+5240059, u'inode_available': 20823887, u'block_available': 3351220, u'size_available':
+13726597120, u'fstype': u'xfs', u'inode_total': 20970432, u'mount': u'/', u'device':
+u'/dev/nvme0n1p1', u'inode_used': 146545, u'block_size': 4096, u'options':
+u'rw,seclabel,relatime,attr2,inode64,noquota'})
+failed: [aaloksinghvi2c.mylabserver.com] (item={u'block_used': 2128528, u'uuid':
+u'0f790447-ebef-4ca0-b229-d0aa1985d57f', u'size_total': 21463281664, u'block_total':
+5240059, u'inode_available': 20805971, u'block_available': 3111531, u'size_available':
+12744830976, u'fstype': u'xfs', u'inode_total': 20970432, u'mount': u'/', u'device':
+u'/dev/nvme0n1p1', u'inode_used': 164461, u'block_size': 4096, u'options':
+u'rw,seclabel,relatime,attr2,inode64,noquota'}) => {
+    "ansible_loop_var": "item",
+"assertion": "item.size_available > item.size_total|float * 0.8",
+    "changed": false,
+    "evaluated_to": false,
+    "item": {
+        "block_available": 3111531,
+        "block_size": 4096,
+        "block_total": 5240059,
+        "block_used": 2128528,
+        "device": "/dev/nvme0n1p1",
+        "fstype": "xfs",
+        "inode_available": 20805971,
+        "inode_total": 20970432,
+        "inode_used": 164461,
+        "mount": "/",
+        "options": "rw,seclabel,relatime,attr2,inode64,noquota",
+        "size_available": 12744830976,
+        "size_total": 21463281664,
+        "uuid": "0f790447-ebef-4ca0-b229-d0aa1985d57f"
+},
+    "msg": "disk space has reached 80% threshold"
+}
+skipping: [aaloksinghvi3c.mylabserver.com] => (item={u'block_used': 1864174, u'uuid':
+u'0f790447-ebef-4ca0-b229-d0aa1985d57f', u'size_total': 21463281664, u'block_total':
+5240059, u'inode_available': 20820538, u'block_available': 3375885, u'size_available':
+13827624960, u'fstype': u'xfs', u'inode_total': 20970432, u'mount': u'/', u'device':
+u'/dev/nvme0n1p1', u'inode_used': 149894, u'block_size': 4096, u'options':
+u'rw,seclabel,relatime,attr2,inode64,noquota'})
+TASK [check_disk : send mail] **************************************************
+fatal: [aaloksinghvi3c.mylabserver.com]: FAILED! => {"changed": false, "msg":
+"Unsupported parameters for (mail) module: when Supported parameters include: attach,
+bcc, body, cc, charset, headers, host, password, port, secure, sender, subject,
+subtype, timeout, to, username"}
+fatal: [aaloksinghvi4c.mylabserver.com]: FAILED! => {"changed": false, "msg":
+"Unsupported parameters for (mail) module: when Supported parameters include: attach,
+bcc, body, cc, charset, headers, host, password, port, secure, sender, subject,
+subtype, timeout, to, username"}
+PLAY RECAP *********************************************************************
+aaloksinghvi2c.mylabserver.com : ok=2
+skipped=1    rescued=0    ignored=0
+aaloksinghvi3c.mylabserver.com : ok=2
+skipped=2    rescued=0    ignored=0
+aaloksinghvi4c.mylabserver.com : ok=2
+skipped=2    rescued=0    ignored=0
+[ansible@aaloksinghvi1c project]$
+changed=0
+changed=0
+changed=0
+```
+NOTE : I am having issues in sending emails from the server and configuring a free
+smtp.
