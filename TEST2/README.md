@@ -23,3 +23,22 @@ aaloksinghvi3c.mylabserver.com (HOST2 - RabbitMq Service)
 aaloksinghvi4c.mylabserver.com (HOST3 - Postgresql Service)
 ```
 -> Created a rbcapp1 systemd service which will run as service on aaloksinghvi2c.mylabserver.com. Details and code for rbcapp1 service demonstrated in TEST1.
+
+```
+[root@aaloksinghvi2c api]# service rbcapp1 status
+Redirecting to /bin/systemctl status rbcapp1.service
+● rbcapp1.service - RBCAPP1 Service
+   Loaded: loaded (/usr/lib/systemd/system/rbcapp1.service; enabled; vendor preset:
+disabled)
+   Active: inactive (dead) since Sat 2020-09-12 03:46:59 UTC; 3h 0min ago
+ Main PID: 1516 (code=killed, signal=HUP)
+Sep 12 03:46:59 aaloksinghvi2c.mylabserver.com systemd[1]: Started RBCAPP1 Service.
+[root@aaloksinghvi2c api]#
+```
+
+-> Created ansible users on all agents/hosts and making sure passwordless logins works using ansible user from
+```
+sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi2c.mylabserver.com
+sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi3c.mylabserver.com
+sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi4c.mylabserver.com
+```
