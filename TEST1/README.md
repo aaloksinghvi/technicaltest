@@ -49,6 +49,7 @@ gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
 autorefresh=1
 type=rpm-md
+
 [root@aaloksinghvi2c api]# yum install elasticsearch
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
@@ -58,6 +59,7 @@ Loading mirror speeds from cached hostfile
  * nux-dextop: mirror.li.nux.ro
  * updates: d36uatko69830t.cloudfront.net
 Nothing to do
+
 [root@aaloksinghvi2c api]# curl -v localhost:9200/_cat/health
 * About to connect() to localhost port 9200 (#0)
 *   Trying ::1...
@@ -74,4 +76,29 @@ Nothing to do
 1600038752 23:12:32 elasticsearch yellow 1 1 3 3 0 0 3 0 - 50.0%
 * Connection #0 to host localhost left intact
 [root@aaloksinghvi2c api]# 
+```
+Execution and Sample output for Test 1_A
+```
+python test1_a.py 
+######Checking status for httpd serivce##### 
+Status for httpd is uploaded to httpd-status-20200913-210440
+######Checking status for postgres serivce##### 
+Status for postgres is uploaded to postgres-status-20200913-210440
+######Checking status for rabbitmq serivce##### 
+Status for rabbitmq is uploaded to rabbitmq-status-20200913-210440
+```
+Execution and Sample output for Test 1_B
+```
+Developed a python script( flask api ) in order to expose REST API - 
+
+[root@aaloksinghvi2c test1]# python test1_b.py 
+ * Serving Flask app "test1_b" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://myservice.rbc.com:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 787-355-081
 ```
