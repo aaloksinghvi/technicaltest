@@ -49,5 +49,29 @@ gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=0
 autorefresh=1
 type=rpm-md
+[root@aaloksinghvi2c api]# yum install elasticsearch
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: d36uatko69830t.cloudfront.net
+ * epel: mirror.steadfastnet.com
+ * extras: d36uatko69830t.cloudfront.net
+ * nux-dextop: mirror.li.nux.ro
+ * updates: d36uatko69830t.cloudfront.net
+Nothing to do
+[root@aaloksinghvi2c api]# curl -v localhost:9200/_cat/health
+* About to connect() to localhost port 9200 (#0)
+*   Trying ::1...
+* Connected to localhost (::1) port 9200 (#0)
+> GET /_cat/health HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: localhost:9200
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< content-type: text/plain; charset=UTF-8
+< content-length: 65
+< 
+1600038752 23:12:32 elasticsearch yellow 1 1 3 3 0 0 3 0 - 50.0%
+* Connection #0 to host localhost left intact
 [root@aaloksinghvi2c api]# 
 ```
