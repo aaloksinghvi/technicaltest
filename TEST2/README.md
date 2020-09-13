@@ -22,3 +22,4 @@ aaloksinghvi2c.mylabserver.com (HOST1 - HTTPD Services and RBCAPP1 Application)
 aaloksinghvi3c.mylabserver.com (HOST2 - RabbitMq Service)
 aaloksinghvi4c.mylabserver.com (HOST3 - Postgresql Service)
 ```
+Created a rbcapp1 systemd service which will run as service on aaloksinghvi2c.mylabserver.com. Details and code for rbcapp1 service demonstrated in TEST1.
