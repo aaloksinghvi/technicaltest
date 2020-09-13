@@ -19,7 +19,7 @@ Provide a second endpoint where the data can be retrieved, i.e
 
 Sample calls
 
-https://myservice.rbc.com/add
+https://myservice.rbc.com/add<n>
 https://myservice.rbc.com/health_check
 
 <b>Pre-requisites , Installation and setup </b>
