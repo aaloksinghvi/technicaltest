@@ -42,3 +42,20 @@ sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi2c.mylabserv
 sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi3c.mylabserver.com
 sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi4c.mylabserver.com
 ```
+Structure of Playbook
+```
+[root@aaloksinghvi1c project]# tree
+.
+├── assignment.yaml
+├── inv
+├── roles
+│   ├── check_disk
+│ │ └── tasks
+│   │       └── main.yaml
+│   ├── check_status
+│ │ └── tasks
+│   │       └── main.yml
+│   └── verify_install
+│ └── tasks
+8 directories, 6 files
+```
