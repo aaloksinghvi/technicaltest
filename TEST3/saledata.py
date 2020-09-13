@@ -10,7 +10,7 @@ def getProperties(file_name):
         df['pricePerSqft'] = df['price'].divide(df['sq__ft'])
         df = df.replace([np.inf, -np.inf], np.nan).dropna()
         averagePricePerSqft = df['pricePerSqft'].mean()
-        print(averagePricePerSqft)
+        print("Average Price / SQ.Foot" + str(averagePricePerSqft))
         df = df[df['pricePerSqft']<averagePricePerSqft]
         print("Creating a report for properties sold for less than the average price / sq.foot to sales-data-filtered.csv")
         df.to_csv('sales-data-filtered.csv')
