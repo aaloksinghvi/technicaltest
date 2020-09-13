@@ -8,6 +8,7 @@ b) Write an Ansible playbook that will action based on a provided variable named
 1. "action=verify_install": verifies the services are installed on their allocated hosts and if not, the playbook should install it. (for the install, please pick just one service to illustrate)
 2. "action=check-disk" : with this action it should check the disk space on all servers and report any disk usage > 80%. Send an alert email to a selected email address (Pick your own).
 3. "action=check-status": with this action it should return the status of the application “rbcapp1” and a list of services that are down. (you can use the REST endpoint created in TEST1).
+
 -Below is a sample command to run the playbook 
  Ansible-playbook assignment.yml -I inventory -e action=verify_install ---- This is for verify install as an example
 
