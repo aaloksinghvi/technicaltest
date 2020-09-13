@@ -1,4 +1,4 @@
-# TECHNICAL TEST
+# TECHNICAL TEST 3
 
 Script to generate a new CSV file that only includes properties sold for less than the average price / sq.foot
 
