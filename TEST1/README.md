@@ -25,13 +25,13 @@ https://myservice.rbc.com/health_check
 <b>Pre-requisites , Installation and setup </b>
 -> Assuming we have rbcapp1, httpd , postgres and rabbitmq running as a service on same linux servers.
 For test purpose we are running on aaloksinghvi2c.mylabserver.com
-Created following service files under /usr/lib/systemd/system ( Code attached )
+Created following service files under /usr/lib/systemd/system ( Files uploaded under folder : systemd )
 ```
 rbcapp1.service
 postgres.service
 rabbitmq.service
 ```
-Created following python files under /usr/bin/ ( Code Attached )
+Created following python files under /usr/bin/ ( Files uploaded under folder : systemd_service_files)
 ```
 rbcapp1.service
 postgres.service
@@ -133,3 +133,5 @@ yellow open postgres MQsecYZcT8SbtnqoZCuFaA 1 1 1 0   5kb   5kb
 
 ```
 NOTE : IMPROVEMENT NEEDED: Upload json file as an input to add operation in rest api for “add” operation
+
+
