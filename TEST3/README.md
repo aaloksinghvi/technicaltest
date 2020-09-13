@@ -19,10 +19,11 @@ Copy the saledata.py to any desired location and please download the sales-data.
 
 Execute the script as mentioned below :
 
-python3 saledata.py
- TEST3 : Generate a new CSV file that only includes properties sold for less than the
+131518MBP15:Desktop asinghvi$ python3 saledata.py 
+TEST3 : Generate a new CSV file that only includes properties sold for less than the
 average price / sq.foot.
-Enter filename with full path: <i>Enter the sales-data.csv</i> file path
+
+Enter filename with full path: #Enter the sales-data.csv file path#
 145.6732527872387
 Creating a report for properties sold for less than the average price / sq.foot to
 sales-data-filtered.csv
