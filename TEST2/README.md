@@ -101,3 +101,6 @@ TASK [verify_install : INSTALL RABBITMQ SERVICE ON HOST2]
 skipping: [aaloksinghvi2c.mylabserver.com] => (item=rabbitmq-server)
 skipping: [aaloksinghvi4c.mylabserver.com] => (item=rabbitmq
 ```
+NOTE : Worked on installing all the required services on respective host mentioned in
+Pre-requisite section but ran into issues in install rabittmq and postgres. HTTPD is
+working fine and output is shown above.
