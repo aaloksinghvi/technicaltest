@@ -42,7 +42,7 @@ sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi2c.mylabserv
 sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi3c.mylabserver.com
 sources: aaloksinghvi1c.mylabserver.com -> desitnation: aaloksinghvi4c.mylabserver.com
 ```
-Structure of Playbook
+-> Structure of Playbook -  For each action mentioned in the problem statement a role is defined
 ```
 [root@aaloksinghvi1c project]# tree
 .
@@ -58,4 +58,46 @@ Structure of Playbook
 │   └── verify_install
 │ └── tasks
 8 directories, 6 files
+```
+Sample output when ansible playbook is executed for each action :
+
+```
+1. action=verify_task
+
+[ansible@aaloksinghvi1c project]$ ansible-playbook -i inv assignment.yaml -e
+"action=verify_install"
+[WARNING]: Found variable using reserved name: action
+PLAY [all]
+***************************************************************************************
+TASK [Gathering Facts]
+***************************************************************************************
+ok: [aaloksinghvi4c.mylabserver.com]
+ok: [aaloksinghvi3c.mylabserver.com]
+ok: [aaloksinghvi2c.mylabserver.com]
+TASK [set_fact]
+***************************************************************************************
+ok: [aaloksinghvi2c.mylabserver.com]
+ok: [aaloksinghvi3c.mylabserver.com]
+ok: [aaloksinghvi4c.mylabserver.com]
+TASK [verify_install]
+***************************************************************************************
+TASK [verify_install : INSTALL HTTPD SERVICE ON HOST1]
+***************************************************************************************
+skipping: [aaloksinghvi3c.mylabserver.com] => (item=httpd)
+*
+*
+*
+*
+*
+skipping: [aaloksinghvi4c.mylabserver.com] => (item=httpd)
+ok: [aaloksinghvi2c.mylabserver.com] => (item=httpd)
+TASK [verify_install]
+***************************************************************************************
+skipping: [aaloksinghvi4c.mylabserver.com] => (item=httpd)
+skipping: [aaloksinghvi3c.mylabserver.com] => (item=httpd)
+ok: [aaloksinghvi2c.mylabserver.com] => (item=httpd)
+TASK [verify_install : INSTALL RABBITMQ SERVICE ON HOST2]
+***************************************************************************************
+skipping: [aaloksinghvi2c.mylabserver.com] => (item=rabbitmq-server)
+skipping: [aaloksinghvi4c.mylabserver.com] => (item=rabbitmq
 ```
