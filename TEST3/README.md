@@ -26,4 +26,5 @@ Average Price / SQ.Foot145.6732527872387
 Creating a report for properties sold for less than the average price / sq.foot to sales-data-filtered.csv
 131518MBP15:Desktop asinghvi$ 
 
+
 ```
