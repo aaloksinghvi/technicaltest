@@ -101,4 +101,35 @@ Developed a python script( flask api ) in order to expose REST API -
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 787-355-081
+ 
+[root@aaloksinghvi2c ~]# curl --header "Content-Type: application/json" --request POST --data '{"service_name": "postgres", "host": "host1", "service_status": "UP"}' http://myservice.rbc.com:8000/add
+{
+  "host": "host1", 
+  "service_name": "postgres", 
+  "service_status": "UP"
+}
+[root@aaloksinghvi2c ~]# 
+
+[root@aaloksinghvi2c ~]# curl -XGET http://myservice.rbc.com:8000/healthcheck
+DOWN
+
+[root@aaloksinghvi2c ~]# curl -v localhost:9200/_cat/indices
+* About to connect() to localhost port 9200 (#0)
+*   Trying ::1...
+* Connected to localhost (::1) port 9200 (#0)
+> GET /_cat/indices HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: localhost:9200
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< content-type: text/plain; charset=UTF-8
+< content-length: 192
+< 
+yellow open httpd    6uARQhcwQoS-RgqS9R4Lxg 1 1 1 0 4.8kb 4.8kb
+yellow open rabbitmq N9Cj6IE1R5q3hud6677JPw 1 1 1 1 6.7kb 6.7kb
+yellow open postgres MQsecYZcT8SbtnqoZCuFaA 1 1 1 0   5kb   5kb
+* Connection #0 to host localhost left intact
+
 ```
+NOTE : IMPROVEMENT NEEDED: Upload json file as an input to add operation in rest api for “add” operation
