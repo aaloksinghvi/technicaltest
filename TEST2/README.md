@@ -12,3 +12,13 @@ b) Write an Ansible playbook that will action based on a provided variable named
 Below is a sample command to run the playbook 
  Ansible-playbook assignment.yml -I inventory -e action=verify_install ---- This is for verify install as an example
 
+<b>Pre-requisites , Installation and setup</b>
+
+In order demonstrate the above challenger I spun 4 servers on playground using linux academy portal namely
+
+```
+aaloksinghvi1c.mylabserver.com (Ansible Controller Server)
+aaloksinghvi2c.mylabserver.com (HOST1 - HTTPD Services and RBCAPP1 Application)
+aaloksinghvi3c.mylabserver.com (HOST2 - RabbitMq Service)
+aaloksinghvi4c.mylabserver.com (HOST3 - Postgresql Service)
+```
