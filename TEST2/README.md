@@ -104,3 +104,80 @@ skipping: [aaloksinghvi4c.mylabserver.com] => (item=rabbitmq
 NOTE : Worked on installing all the required services on respective host mentioned in
 Pre-requisite section but ran into issues in install rabittmq and postgres. HTTPD is
 working fine and output is shown above.
+
+```
+In order execute the check_status action we need to bring up the rest api that is running on aaloksinghvi2.mylabserver.com
+
+[root@aaloksinghvi2c api]# python test1_b.py 
+ * Serving Flask app "test1_b" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://myservice.rbc.com:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 787-355-081
+
+[ansible@aaloksinghvi1c project]$ ansible-playbook -i inv assignment.yaml -e "action=check_status"
+[WARNING]: Found variable using reserved name: action
+
+PLAY [all] ******************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************************************************************
+ok: [aaloksinghvi3c.mylabserver.com]
+ok: [aaloksinghvi4c.mylabserver.com]
+ok: [aaloksinghvi2c.mylabserver.com]
+
+TASK [set_fact] *************************************************************************************************************************************************************************************
+ok: [aaloksinghvi2c.mylabserver.com]
+ok: [aaloksinghvi4c.mylabserver.com]
+ok: [aaloksinghvi3c.mylabserver.com]
+
+TASK [verify_install] *******************************************************************************************************************************************************************************
+skipping: [aaloksinghvi2c.mylabserver.com]
+skipping: [aaloksinghvi3c.mylabserver.com]
+skipping: [aaloksinghvi4c.mylabserver.com]
+
+TASK [check disk] ***********************************************************************************************************************************************************************************
+skipping: [aaloksinghvi2c.mylabserver.com]
+skipping: [aaloksinghvi3c.mylabserver.com]
+skipping: [aaloksinghvi4c.mylabserver.com]
+
+TASK [check_status] *********************************************************************************************************************************************************************************
+
+TASK [check_status] *********************************************************************************************************************************************************************************
+skipping: [aaloksinghvi3c.mylabserver.com]
+skipping: [aaloksinghvi4c.mylabserver.com]
+ok: [aaloksinghvi2c.mylabserver.com]
+
+TASK [check_status : debug] *************************************************************************************************************************************************************************
+ok: [aaloksinghvi2c.mylabserver.com] => {
+    "health_check": {
+        "changed": false, 
+        "content_length": "4", 
+        "content_type": "text/html; charset=utf-8", 
+        "cookies": {}, 
+        "cookies_string": "", 
+        "date": "Sun, 13 Sep 2020 23:00:28 GMT", 
+        "elapsed": 0, 
+        "failed": false, 
+        "msg": "OK (4 bytes)", 
+        "redirected": false, 
+        "server": "Werkzeug/1.0.1 Python/2.7.5", 
+        "status": 200, 
+        "url": "http://myservice.rbc.com:8000/healthcheck"
+    }
+}
+skipping: [aaloksinghvi3c.mylabserver.com]
+skipping: [aaloksinghvi4c.mylabserver.com]
+
+PLAY RECAP ******************************************************************************************************************************************************************************************
+aaloksinghvi2c.mylabserver.com : ok=4    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+aaloksinghvi3c.mylabserver.com : ok=2    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+aaloksinghvi4c.mylabserver.com : ok=2    changed=0    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+
+[ansible@aaloksinghvi1c project]$ 
+
+
+```
